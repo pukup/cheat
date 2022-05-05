@@ -1,7 +1,5 @@
-# Some aspects of DRF
-
 # views.py -> Request, Response, status
-# Function baVsed view
+# Function bssed view
 @api_view(['GET', 'POST'])
 def employee_list(request):
     if request.method == 'GET':
@@ -37,25 +35,3 @@ def employee_detail(request, pk):
     elif request.method == 'DELTE':
         emp.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
-
-# models.py -> ORM
-class Employee(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=28)
-    salary = models.DecimalField(max_digits=10, decimal_places=3)
-
-    def __str__(self):
-        return self.id+self.name+self.salary
-
-# serializers.py
-class Employee(Serializers.ModelSerializer):
-    class Meta:
-        model=Employee
-        fields=['id','name','salary']
-# urls.py
-urlpatterns = [
-    path('admin/', admin.site.urls)
-    path('emp/', views.employee_list)
-    path('emp/<int:pk>', views.employee_detail)
-]
-
