@@ -1,6 +1,16 @@
 # urls.py
+
+# @api_view(); APIView; mixins; generics;
 urlpatterns = [
     path('admin/', admin.site.urls)
     path('students/', views.StudentList.as_view())
     path('students/<int:pk>', views.StudentDetail.as_view())
+]
+
+# viewsets
+router = DefaultRouter()
+router.register('students', views.StudentViewSet)
+
+urlpatterns = [
+    path('', include(router.urls))
 ]
