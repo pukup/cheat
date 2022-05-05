@@ -3,3 +3,15 @@ class StudentSerializer(Serializers.ModelSerializer):
     class Meta:
         model=Student
         fields=['id','name','score']
+
+# Nested serializers
+class BookSeralizer(Serializers.ModelSerializer):
+    class Meta:
+    model=Book
+    fields='__all__'
+
+class AuthorSeralizer(Serializers.ModelSerializer):
+    books = BookSeralizer(read_only=True,many=True)
+    class Meta:
+    model=Author
+    fields='__all__'

@@ -1,1 +1,6 @@
 django-admin startproject
+
+INSTALLED_APPS = [
+    'rest_framework',
+    'nApp'
+]
