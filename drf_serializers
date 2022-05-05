@@ -1,5 +1,5 @@
 # serializers.py
-class Employee(Serializers.ModelSerializer):
+class StudentSerializer(Serializers.ModelSerializer):
     class Meta:
-        model=Employee
-        fields=['id','name','salary']
+        model=Student
+        fields=['id','name','score']

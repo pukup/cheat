@@ -1,8 +1,8 @@
 # models.py -> ORM
-class Employee(models.Model):
+class Student(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=28)
-    salary = models.DecimalField(max_digits=10, decimal_places=3)
+    score = models.DecimalField(max_digits=10, decimal_places=3)
 
     def __str__(self):
-        return self.id+self.name+self.salary
+        return self.id+self.name+self.score

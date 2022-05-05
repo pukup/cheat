@@ -1,6 +1,6 @@
 # urls.py
 urlpatterns = [
     path('admin/', admin.site.urls)
-    path('emp/', views.employee_list)
-    path('emp/<int:pk>', views.employee_detail)
+    path('students/', views.StudentList.as_view())
+    path('students/<int:pk>', views.StudentDetail.as_view())
 ]
