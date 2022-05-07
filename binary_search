@@ -1,0 +1,15 @@
+# Has to be sorted
+# (n log n) is the cost of sorting
+# No algorithm can sort a collection in a better time complexity than that
+
+def search(arr, target):
+    start, end = 0, len(arr)-1
+    while start <= end:
+        mid = (start+end)//2
+        if target == arr[mid]:
+            retrun mid
+        elif target < arr[mid]:
+            end = mid-1
+        else:
+            start = mid+1
+        return -1
