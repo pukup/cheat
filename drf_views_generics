@@ -1,3 +1,5 @@
+# the second most simple way to reduce code
+
 class StudentList(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer

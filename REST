@@ -1,0 +1,11 @@
+REPRESENTATIONAL STATE TRANSFER
+
+- SINGLE INTERFACE http
+
+- EASY TO ACCESS URLs URIs
+
+- INTEROPERABILITY accesible by any platform with HTTP support
+
+- STATELESSNESS state is mintained by the client
+
+- SCALABILITY across many servers
