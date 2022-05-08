@@ -1,0 +1,37 @@
+from django_filters.rest_framework import DjangoFilterBackend # Requires pip installation
+from rest_framework import filters # Searches using 1 parameter in all defined fields 
+
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    pagination_class = LimitOffsetPagination
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields: = ['name', 'score']
+
+# localhost:8000/students/?name=&score=
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    pagination_class = LimitOffsetPagination
+    filter_backends = [filters.SearchFilter]
+    search_fields: = ['name', 'score']
+
+# localhost:8000/students/?search=
+
+# '^' Starts with search Eg. '^name'
+# '=' Exact matches Eg. '=name'
+# '@' Full-text search only supported by postgres
+# '$' Regex search 
+
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    pagination_class = LimitOffsetPagination
+    filter_backends = [filters.OrderingFilter] 
+    # ordering_fields = ['name', 'score'] # If not specified ordering_fields all fields are available 
+    # ordering = ['score'] # It can be included to default ordering
+
+# localhost:8000/students/?ordering=-score
