@@ -12,10 +12,6 @@ router = DefaultRouter()
 router.register('students', views.StudentViewSet)
 
 urlpatterns = [
-    path('', include(router.urls))
-]
-
-urlpatterns = [
     path('admin/', admin.site.urls)
-    path('api/', include('nApp.urls'))
+    path('api/', include(router.urls))
 ]

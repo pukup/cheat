@@ -1,0 +1,21 @@
+def isFlightNumberValid(data):    
+        if(re.match("^[a-zA-Z0-9]*$", data['flightNumber'])==None):
+            raise serializers.ValidationError("Invalid number")
+        return flightNumber
+
+
+class FlightSerializer(serializers.ModelSerializers):
+    class Meta:
+        model = Flight
+        fields = '__all__'
+        validators = [isFlightNumberValid]
+
+    def validate_flightNumber(self, flightNumber):
+        if(re.match("^[a-zA-Z0-9]*$", flightNumber)==None):
+            raise serializers.ValidationError("Invalid number")
+        return flightNumber
+        
+    def validate(self, data):
+        if(re.match("^[a-zA-Z0-9]*$", data['flightNumber'])==None):
+            raise serializers.ValidationError("Invalid number")
+        return flightNumber
