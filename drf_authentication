@@ -1,0 +1,19 @@
+# Authentication
+# Django takes user and password and verifies user exists in DB
+# And creates a user object model so it can be used by the application
+# Django user object is a table in the DB created when migrate command
+# tables names are "auth_user", "auth_group", "auth_permissions"
+
+# Authorization: what actions can be performed on a model
+# A user belongs to a group and a group can have multiple permissions
+# A user can also be mapped to multiple permissions
+
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import DjangoModelPermissions # Check the user objects permissions
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    authentication_classes = [BasicAuthentication]
+    permissions_classes = [IsAuthenticated, DjangoModelPermissions]
