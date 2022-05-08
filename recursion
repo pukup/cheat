@@ -1,0 +1,2 @@
+Recursion is needed to parse an XML file because an XML file is a tree.
+And recursion is the perfet way to go down a tree and back up a tree 
