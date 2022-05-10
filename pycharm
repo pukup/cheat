@@ -3,3 +3,5 @@ parameters:             runserver 0.0.0.0:8000
 environment variables:  PYTHONUNBUFFERED=1
 Python interpreter:     Remote Python 3.9.7 Docker Compose (fmapi_django at [wktrees/pso-mpm_api.git/develop/dev.yml])
 working directory:      wktrees/pso-mpm_api.git/develop/src
+
+# Not sure if docker compose containers must be executed so pycharm can add docker compose as interpreter
