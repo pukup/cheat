@@ -1,0 +1,9 @@
+cat /run.sh
+
+DBCONFIG=$(curl "http://$NVT_SECRET_SERVICE_SERVICE_HOST/secret/shared/database" -H 'X-Tenant: solution')
+export DATABASE_HOST=$(echo $DBCONFIG | jq -r .data.host)
+export DATABASE_USER=$(echo $DBCONFIG | jq -r .data.user)
+export DATABASE_PASSWORD=$(echo $DBCONFIG | jq -r .data.password)
+
+DJANGO_CONFIG=$(curl "http://nvt-secret-service/secret/shared/django" -H 'X-Tenant: solution')
+export DJANGO_SECRET_KEY=$(echo $DJANGO_CONFIG | jq -r .data.secret_key)
