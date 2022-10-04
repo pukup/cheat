@@ -1,0 +1,5 @@
+REST is a set of guidelines that offers flexible implementation. 
+SOAP is a protocol with specific requirements like XML messaging.
+SOAP web services offer built-in security and transaction compliance 
+that align with many enterprise needs, 
+but that also makes them heavier
