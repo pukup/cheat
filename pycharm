@@ -1,5 +1,17 @@
+# Add docker container as remote interpreter
+
 script path:            wktrees/pso-mpm_api.git/develop/src/manage.py
 parameters:             runserver 0.0.0.0:8000
 environment variables:  PYTHONUNBUFFERED=1
 Python interpreter:     Remote Python 3.9.7 Docker Compose (fmapi_django at [wktrees/pso-mpm_api.git/develop/dev.yml])
 working directory:      wktrees/pso-mpm_api.git/develop/src
+
+# Not sure if docker compose containers must be instantiated so pycharm can add docker compose as interpreter
+
+# Add configuration to run tests in docker container
+
+script path:            wktrees/pso-mpm_api.git/develop/src/manage.py
+parameters:             test test_input_validations
+environment variables:  PYTHONUNBUFFERED=1;USER_LOGIN=test@mail.com
+Python interpreter:     Remote Python 3.9.7 Docker Compose (fmapi_django at [wktrees/pso-mpm_api.git/develop/dev.yml])
+working directory:      wktrees/pso-mpm_api.git/develop/src/management/tests/

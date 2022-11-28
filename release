@@ -1,0 +1,16 @@
+
+# In pso_mpm_api repo from branch develop create new branch = release/6.1.0
+    VERSION
+    setup.cfg
+    setup.py
+    src/fm_api/__init__.py
+# commit
+# PR to dev and wait
+    get circle tag
+# In internal pso-pso_mpm2_helm_releases from branch stg create new branch = to-stg-2022-05-18
+    solutions.spec
+# commit
+# PR to stg
+    wait for devops to merge
+# In pso-pso_mpm2_helm_releases dev branch change solutions.spec and commit
+# In pso_mpm_api merge PR release/6.1.0

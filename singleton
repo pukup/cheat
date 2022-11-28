@@ -1,0 +1,28 @@
+# A singleton is a class that allows only one instance of it 
+# It can be useful if you want a common class that can be referenced by many different parts of your program
+# especially if your class is a read-only class.
+# The singleton pattern can be implemented in Python through the use of an inner class:
+
+class MySingleton:
+    _inner=None
+    class inner:
+        def __init__(self):
+            self.num=None
+    def __init__(self):
+        if MySingleton._inner is None:
+            MySingleton._inner=MySingleton.inner()
+    def __getattr__(self, name):
+        return getattr(self._inner, name)
+    def __setattr__(self, name, value):
+        return setattr(self._inner, name, value)
+
+
+
+first=MySingleton()
+first.num=5
+print first.num
+
+second=MySingleton()
+second.num=7
+print second.num
+print first.num
