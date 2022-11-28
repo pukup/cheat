@@ -7,7 +7,7 @@
 # commit
 # PR to dev and wait
     get circle tag
-# In pso-pso_mpm2_helm_releases from branch stg create new branch = to-stg-2022-05-18
+# In internal pso-pso_mpm2_helm_releases from branch stg create new branch = to-stg-2022-05-18
     solutions.spec
 # commit
 # PR to stg

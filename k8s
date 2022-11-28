@@ -1,9 +1,44 @@
-cat /run.sh
+export TMP_CERT=$(mktemp) && echo -e "" > $TMP_CERT && kubectl config set-cluster pso01-dev-us-east-1-aws.cf.platform.mckinsey.cloud --server=https://ou-api-pso01-dev-us-east-1-aws.cf.platform.mckinsey.cloud --certificate-authority=/dev/null --embed-certs=true && kubectl config set-context pso01-dev-us-east-1-aws.cf.platform.mckinsey.cloud --cluster=pso01-dev-us-east-1-aws.cf.platform.mckinsey.cloud --user=00ub24io3aknz2d8i357@pso01-dev-us-east-1-aws.cf.platform.mckinsey.cloud  && kubectl config set-credentials 00ub24io3aknz2d8i357@pso01-dev-us-east-1-aws.cf.platform.mckinsey.cloud  --auth-provider=oidc --auth-provider-arg=client-secret= --auth-provider-arg=idp-issuer-url=https://login-pso01-dev-us-east-1-aws.cf.platform.mckinsey.cloud/auth/idp/k8sIdp --auth-provider-arg=client-id=kubernetes --auth-provider-arg=refresh-token=q1bKLFOyUipPN8hz9rH0NSmu9Mrw8XUt9cwu1k+PKTUwME6BkEo6Sql5yUWVBSWpKUGphaWpxSVAfT4BGdlp+k5pBqVOaUkRJk6O2gFGpgVBmeYm4X7Zhi7ZzunBJpYFuYVF6ckFoT7a6W75oYbeSfqV5kV+gb6hfsZKtQA=  --auth-provider-arg=id-token=eyJraWQiOiJDPVVTLCBTVD1Ob3J0aCBWaXJnaW5pYSwgTD1wc28wMSwgTz1EZXYsIE9VPXBzbzAxIERldiwgQ049dW5pc29uLXNhbWwyLXJwLXNpZy1DPVVTLCBTVD1Ob3J0aCBWaXJnaW5pYSwgTD1wc28wMSwgTz1EZXYsIE9VPXBzbzAxIERldiwgQ049dW5pc29uLXNhbWwyLXJwLXNpZy0xNjQ3OTUyMDExNTA0IiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2xvZ2luLXBzbzAxLWRldi11cy1lYXN0LTEtYXdzLmNmLnBsYXRmb3JtLm1ja2luc2V5LmNsb3VkL2F1dGgvaWRwL2s4c0lkcCIsImF1ZCI6Imt1YmVybmV0ZXMiLCJleHAiOjE2NjkyODk3MzIsImp0aSI6IkVNUmJUXzV3c25SV1ZtRHBraE9kNGciLCJpYXQiOjE2NjkyODk2NzIsIm5iZiI6MTY2OTI4OTU1Miwic3ViIjoiMDB1YjI0aW8zYWtuejJkOGkzNTciLCJuYW1lIjoiIFVyb3oiLCJncm91cHMiOlsiZ3JwLW8yby1ldmVyeW9uZSIsIkV2ZXJ5b25lIiwiY250LWNjcDprOHMtY2x1c3Rlcjpwc28wMTpkZXY6cmVhZC1vbmx5IiwiY250LWNjcDprOHMtY2x1c3Rlcjpwc28wMTpkZXY6cHNvLW5hbWVzcGFjZXM6YWRtaW4iLCJjbnQtY2NwOms4cy1jbHVzdGVyOnBzbzAxOnN0ZzpyZWFkLW9ubHkiLCJjbnQtY2NwOms4cy1jbHVzdGVyOnBzbzAxOnN0Zzpwc28tbmFtZXNwYWNlczphZG1pbiIsImNudC1jY3A6azhzLWNsdXN0ZXI6cHNvMDI6ZGV2OnBzby1uYW1lc3BhY2VzOmFkbWluIiwiY250LWNjcDprOHMtY2x1c3Rlcjpwc28wMjpkZXY6cmVhZC1vbmx5Il0sInByZWZlcnJlZF91c2VybmFtZSI6IngtNDgteHgtNDgteHVieC01MC14eC01Mi14aW94LTUxLXhha256eC01MC14ZHgtNTYteGl4LTUxLXh4LTUzLXh4LTU1LXgiLCJlbWFpbCI6IkRpZWdvX1Vyb3pAZXh0ZXJuYWwubWNraW5zZXkuY29tIn0.IgzoveAQn-cXEoIb4Ia_R84xF1G2JhRnF7XTxy0hTbNaey5T030PQFNa1Iyecv7tpjJqI0n0gUg5keSZwQz9M163umtdnAlg2MVJDcfvAE8S2fiiASXQlPiShBgqJDaKunC_RnvOmFVs0J9G68DVeyuVKWOlLaFBWXDamqEWgjvCJ9LEW6_XT7kdQBmfRt2uGIPQeEkNd6EmbEoo1od7u_com7RvCoH5aOyEU18G6DoWm_ujB1v6ISfpp2dzsJ6LLI3PoNrJA_AajPEH_Tc1rPdtO6f--l3TMRSH_Nr8BpKdAACXiJEli_Qsbrpwulbz7x4LnS01Cs4mowR0Dx85-Q  --auth-provider-arg=idp-certificate-authority-data=   && kubectl config use-context pso01-dev-us-east-1-aws.cf.platform.mckinsey.cloud && rm $TMP_CERT
 
-DBCONFIG=$(curl "http://$NVT_SECRET_SERVICE_SERVICE_HOST/secret/shared/database" -H 'X-Tenant: solution')
-export DATABASE_HOST=$(echo $DBCONFIG | jq -r .data.host)
-export DATABASE_USER=$(echo $DBCONFIG | jq -r .data.user)
-export DATABASE_PASSWORD=$(echo $DBCONFIG | jq -r .data.password)
+alias k=kubectl
 
-DJANGO_CONFIG=$(curl "http://nvt-secret-service/secret/shared/django" -H 'X-Tenant: solution')
-export DJANGO_SECRET_KEY=$(echo $DJANGO_CONFIG | jq -r .data.secret_key)
+k cluster-info
+k config view ------------------------------------------------>(similar to .kube/config file)
+
+k config get-contexts
+k config use-context [name]
+k config set-context --current --namespace=[name]
+k config delete-context [name] ------------------------------->(deleting and renaming contexts doesn't affect clusters)
+                                                               (To delete or rename cluster change .kube/config file)
+k config rename-context [oldname][newname]
+
+k get ns
+k create ns [namespace]
+k delete ns [namespace]
+
+k get nodes
+k describe node [name]
+
+k get po ------------------------------------------------------>(Containers within pod share IP address space and volumes)
+                                                                (Containers use localhost to communicate with each other inside the pod)
+                                                                (Pods aren't update they are replaced with new version)
+                                                                (Pods are added to scale not containers inside pods)
+k get po -n [namespace]
+k get po -A
+k get po -o wide
+k describe po [podname]
+k get po [podname] -o yaml > file.yml
+
+k create -f [filename.yml] 
+k run [podname] --image=busybox -- /bin/sh -c "sleep 3600"
+
+k delete po [podname]
+k delete -f [filename.yml]
+k delete po [podname] --wait=false
+k delete po [podname] --grace-period=0 --force ----------------> Brutal kill
+
+k exec -it [podname] -- sh
+k exec -it [podname] -- bash
+
+k create deploy [name] --image=[imagename]
+k delete deploy [name]
