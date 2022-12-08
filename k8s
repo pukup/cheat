@@ -29,8 +29,9 @@ k get po -o wide
 k describe po [podname]
 k get po [podname] -o yaml > file.yml
 
-k create -f [filename.yml] 
 k run [podname] --image=busybox -- /bin/sh -c "sleep 3600"
+k create -f [filename.yml] 
+k apply -f [filename.yml]
 
 k delete po [podname]
 k delete -f [filename.yml]
@@ -39,6 +40,12 @@ k delete po [podname] --grace-period=0 --force ----------------> Brutal kill
 
 k exec -it [podname] -- sh
 k exec -it [podname] -- bash
+
+SELECTORS
+within a yaml file in spec: 
+                        nodeSelector:
+                            disktype: superfast
+k8s will schedule the pod creation in node with label diskType:superfast
 
 k create deploy [name] --image=[imagename]
 k delete deploy [name]
