@@ -49,3 +49,9 @@ k8s will schedule the pod creation in node with label diskType:superfast
 
 k create deploy [name] --image=[imagename]
 k delete deploy [name]
+
+k get rs
+k describe rs
+k get ds
+k describe ds
+

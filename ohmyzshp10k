@@ -80,5 +80,7 @@ Edit ~/.zshrc file, find plugins=(git) replace plugins=(git) with :
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 Reopen your terminal, now you should be able to use the auto suggestions and syntax highlighting.
 
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 Have fun with your terminal ! 🎉
