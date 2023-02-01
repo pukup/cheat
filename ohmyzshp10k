@@ -1,0 +1,84 @@
+1. Install zsh in Ubuntu using an apt package manager
+    sudo apt install zsh
+
+2. The package manager will install the latest release of Zsh which is 5.8
+    zsh --version
+    zsh 5.8 (x86_64-ubuntu-linux-gnu)
+
+3. We can also check with cat /etc/shells , to see if Zsh in available on the valid login shells. If Zsh has been setup, /usr/bin/zsh will exist in the list of valid login shells.
+
+4. Set Zsh as default shell
+    chsh -s /usr/bin/zsh
+
+5. Log out and then login again to your terminal to use the new Zsh shell.
+    echo $SHELL
+    /usr/bin/zsh
+
+6. Install oh my zsh using curl
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+7. Use agnoster zsh theme
+    Edit the ~/.zshrc file, edit this following line
+        ZSH_THEME="robbyrussell"
+    Into
+        ZSH_THEME="agnoster" # (this is one of the fancy ones)
+        # see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#agnoster
+    The powerline may looks broken as the screenshoot above. But don’t worry. What we need to do is install the powerline font. Run this command in the terminal :
+        sudo apt-get install fonts-powerline
+        Now open a new terminal
+
+8. Install powerlevel10k for Oh my zsh
+
+Run this following command :
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+Now, edit the ZSH_THEME in ~/.zshrc file into :
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+Open a new terminal, and you should see the powerlevel10k theme has applied. If the p10k configuration wizard does not start automatically, you can run the configuration wizard the powerlevel10k theme with this command :
+
+p10k configure
+After you run the command above, p10k will prompt some questions, and you can choose the answer based on your personal preferences. Here’s the final look of my zsh :
+
+
+9. Install Dracula theme for GNOME terminal
+
+Install dconf-cli with following command :
+
+sudo apt-get install dconf-cli
+Clone the repository
+
+git clone https://github.com/dracula/gnome-terminal
+cd gnome-terminal
+Right click in the terminal, then choose preferences. In preferences, choose add profiles (the + button on the right), fill the new profile name i.e. dracula.
+
+
+In the Colors tab, uncheck the ‘Use colors from system theme’ in Text and Background Color. Then, close the preferences.
+
+
+Now run the installation script :
+
+./install.sh
+Then follow the instructions, when the prompt ask you to choose a profile, choose the profile that we have been created before.
+
+Now back to preferences setting, set dracula as default profile.
+
+
+Now, start a new terminal session, and see the dracula theme has been applied in the GNOME terminal
+
+
+Install plugins (zsh-autosuggestions and zsh-syntax-highlighting)
+
+Download zsh-autosuggestions :
+
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions 
+Download zsh-syntax-higlighting :
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+Edit ~/.zshrc file, find plugins=(git) replace plugins=(git) with :
+
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+Reopen your terminal, now you should be able to use the auto suggestions and syntax highlighting.
+
+
+Have fun with your terminal ! 🎉
